@@ -1,4 +1,4 @@
-from gradio_client import Client
+from gather import Client
 import shutil
 
 client = Client("GRADIO_API_ENDPOINT")
