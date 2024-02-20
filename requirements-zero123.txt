@@ -1,6 +1,7 @@
 gradio
 torch
 torchvision
+ninja
 git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 libigl
 git+https://github.com/NVlabs/nvdiffrast
