@@ -2,7 +2,7 @@
 
 # Update system package list
 echo "Updating system packages..."
-sudo apt-get update
+apt-get update
 
 # Install system-wide dependencies
 echo "Installing system-wide dependencies..."
