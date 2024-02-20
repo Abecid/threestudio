@@ -17,6 +17,6 @@ echo "Installing system-wide dependencies..."
 
 # Install Python dependencies
 echo "Installing Python dependencies from requirements.txt..."
-pip install -r requirements.txt
+pip install -r requirements-zero123.txt
 
 echo "Setup completed successfully!"
