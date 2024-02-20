@@ -7,7 +7,7 @@ git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 diffusers<0.20
 transformers==4.28.1
 accelerate
-opencv-python
+opencv-python==4.8.0.74
 tensorboard
 matplotlib
 imageio>=2.28.0

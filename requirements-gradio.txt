@@ -1,0 +1,8 @@
+gradio==4.11.0
+trimesh[easy]
+lightning==2.0.0
+omegaconf==2.3.0
+fastapi>=0.104.0
+jaxtyping
+pydantic>=2.0
+opencv-python==4.8.0.74

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add Environment Variables
-# Add PATH and LD_LIBRARY_PATH environment variables
+# Add PATH and LD_LIBRARY_PATH environment variables (For nvcc; CUDA 12.2)
 echo "Setting up CUDA environment variables..."
 export PATH=/usr/local/cuda-12.2/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64:$LD_LIBRARY_PATH
@@ -28,12 +28,21 @@ echo "Installing system-wide dependencies..."
 # python3 -m virtualenv venv
 # . venv/bin/activate
 
+echo "Updating pip..."
 python3 -m pip install --upgrade pip
 
 # Install Python dependencies
 echo "Installing Python dependencies from requirements.txt..."
-pip install torch torchvision ninja
+# pip install torch torchvision
+pip install ninja
+
+# Default requirements
+pip install -r requirements.txt
+
+# zero123 requirements
 pip install -r requirements-zero123.txt
-# pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+
+# gradio requirements
+pip install -r requirements-gradio.txt
 
 echo "Setup completed successfully!"
