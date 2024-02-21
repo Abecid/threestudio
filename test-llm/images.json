@@ -1,0 +1,134 @@
+[
+    {
+        "Model": "mvdream",
+        "Images": [
+            {
+                "Seed": "2",
+                "Paths": []
+            },
+            {
+                "Seed": "982",
+                "Paths": [
+                    {
+                        "View": "back",
+                        "Path": "images/mvdream/cheerleading/982/back.png"
+                    },
+                    {
+                        "View": "front",
+                        "Path": "images/mvdream/cheerleading/982/front.png"
+                    },
+                    {
+                        "View": "left",
+                        "Path": "images/mvdream/cheerleading/982/left.png"
+                    },
+                    {
+                        "View": "right",
+                        "Path": "images/mvdream/cheerleading/982/right.png"
+                    }
+                ]
+            }
+        ],
+        "Prompt": "High school cheerleading"
+    },
+    {
+        "Model": "mvdream",
+        "Images": [
+            {
+                "Seed": "1",
+                "Paths": []
+            },
+            {
+                "Seed": "982",
+                "Paths": []
+            }
+        ],
+        "Prompt": "Sparkling red diamond necklace"
+    },
+    {
+        "Model": "mvdream",
+        "Images": [
+            {
+                "Seed": "0",
+                "Paths": []
+            },
+            {
+                "Seed": "1463",
+                "Paths": []
+            }
+        ],
+        "Prompt": "Girl playing a piano"
+    },
+    {
+        "Model": "mvdream",
+        "Images": [
+            {
+                "Seed": "1",
+                "Paths": [
+                    {
+                        "View": "back",
+                        "Path": "images/mvdream/tiger/1/back.png"
+                    },
+                    {
+                        "View": "front",
+                        "Path": "images/mvdream/tiger/1/front.png"
+                    },
+                    {
+                        "View": "left",
+                        "Path": "images/mvdream/tiger/1/left.png"
+                    },
+                    {
+                        "View": "right",
+                        "Path": "images/mvdream/tiger/1/right.png"
+                    }
+                ]
+            },
+            {
+                "Seed": "12312",
+                "Paths": [
+                    {
+                        "View": "back",
+                        "Path": "images/mvdream/tiger/12312/back.png"
+                    },
+                    {
+                        "View": "front",
+                        "Path": "images/mvdream/tiger/12312/front.png"
+                    },
+                    {
+                        "View": "left",
+                        "Path": "images/mvdream/tiger/12312/left.png"
+                    },
+                    {
+                        "View": "right",
+                        "Path": "images/mvdream/tiger/12312/right.png"
+                    }
+                ]
+            },
+            {
+                "Seed": "23",
+                "Paths": [
+                    {
+                        "View": "back",
+                        "Path": "images/mvdream/tiger/23/back.png"
+                    },
+                    {
+                        "View": "front",
+                        "Path": "images/mvdream/tiger/23/front.png"
+                    },
+                    {
+                        "View": "left",
+                        "Path": "images/mvdream/tiger/23/left.png"
+                    },
+                    {
+                        "View": "right",
+                        "Path": "images/mvdream/tiger/23/right.png"
+                    }
+                ]
+            },
+            {
+                "Seed": "45",
+                "Paths": []
+            }
+        ],
+        "Prompt": "Tiger wearing a hat sitting on a sofa"
+    }
+]

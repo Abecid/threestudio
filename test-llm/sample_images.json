@@ -1,0 +1,79 @@
+[
+    {
+     "Model": "MVDream",
+      "Prompt": "Kids playing soccer",
+      "Images": [
+        {
+          "Seed": 32,
+          "Paths": [
+                      {
+                      "View": "Front",
+                      "Path": "images/kids/32/front.png"
+                      },
+                      {
+                      "View": "Left",
+                      "Path": "images/kids/32/left.png"
+                      }
+            ]
+        },
+        {
+            "Seed": 56,
+            "Paths": [
+                        {
+                        "View": "Front",
+                        "Path": "images/kids/56/front.png"
+                        },
+                        {
+                        "View": "Left",
+                        "Path": "images/kids/56/left.png"
+                        }
+                ]
+        },
+        {
+            "Seed": 1234,
+            "Paths": [
+                        {
+                        "View": "Front",
+                        "Path": "images/kids/56/front.png"
+                        },
+                        {
+                        "View": "Left",
+                        "Path": "images/kids/56/left.png"
+                        }
+                ]
+        },
+        {
+            "Seed": 432,
+            "Paths": [
+                        {
+                        "View": "Front",
+                        "Path": "images/kids/56/front.png"
+                        },
+                        {
+                        "View": "Left",
+                        "Path": "images/kids/56/left.png"
+                        }
+                ]
+        }
+      ] 
+    },
+    {
+    "Model": "Yolo",
+        "Prompt": "Kids playing soccer",
+        "Images": [
+        {
+            "Seed": 32,
+            "Paths": [
+                        {
+                        "View": "Front",
+                        "Path": "images/kids/133/front.png"
+                        },
+                        {
+                        "View": "Left",
+                        "Path": "images/kids/133/left.png"
+                        }
+            ]
+        }
+        ] 
+    }
+]

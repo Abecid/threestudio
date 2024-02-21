@@ -1,0 +1,4 @@
+json
+jupyter
+openai
+python-dotenv
