@@ -250,7 +250,7 @@ class Zero123(BaseLift3DSystem):
     def validation_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-            f"it{self.true_global_step}-val/{batch['index'][0]}.png",
+            f"it{self.true_global_step}-val/{batch['index'][0]}-{self.cfg.random_seed}.png",
             (
                 [
                     {
@@ -323,7 +323,7 @@ class Zero123(BaseLift3DSystem):
     def test_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-            f"it{self.true_global_step}-test/{batch['index'][0]}.png",
+            f"it{self.true_global_step}-test/{batch['index'][0]}-{self.cfg.random_seed}.png",
             (
                 [
                     {
