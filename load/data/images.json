@@ -1,0 +1,55 @@
+[
+    {
+        "Prompt": "Chinese Sammurai Armour",
+        "image_path": "./load/images/chinese_sammurai_rgba.png",
+        "Source": "DALLE-3"
+    }, {
+        "Prompt": "old wooden weathered damaged white church",
+        "image_path": "./load/images/house_rgba.png",
+        "Source": "DALLE-3"
+    }, {
+        "Prompt": "Front Entrance Gate of a Amusement Park",
+        "image_path": "./load/images/park_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "cave man full body realistic",
+        "image_path": "./load/images/caveman_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "cute little goblin",
+        "image_path": "./load/images/goblin_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "anime ninja girl 3d",
+        "image_path": "./load/images/ninja_girl_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "horse eating a watermelon",
+        "image_path": "./load/images/horse_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "avantgard blue sofa with yellow legs",
+        "image_path": "./load/images/sofa_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "Tree with big apple",
+        "image_path": "./load/images/tree_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "pink panther on steroids",
+        "image_path": "./load/images/panther_rgba.png",
+        "Source": "DALLE-3"
+    },
+    {
+        "Prompt": "Dog in a princess dress",
+        "images_path": "./load/images/dog_dress_rgba.png",
+        "Source": "DALLE-3"
+    }
+]
