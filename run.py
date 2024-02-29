@@ -131,7 +131,6 @@ def main(args, extras) -> None:
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     env_gpus_str = os.environ.get("CUDA_VISIBLE_DEVICES", None)
     env_gpus = list(env_gpus_str.split(",")) if env_gpus_str else []
-    selected_gpus = [0]
 
     devices = -1
     if len(env_gpus) > 0:

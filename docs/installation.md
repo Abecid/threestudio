@@ -34,6 +34,10 @@ docker pull purplesand/threestudio:latest
 ```
 2. Open the project in VSCode
 3. Cmd+Shift+P -> "Dev Containers: Open Folder in Container"
+4. If you want to connect to the container via SSH, you can use the following command
+```
+docker exec -it threestudio /bin/bash
+```
 
 ## Install threestudio via Docker
 
