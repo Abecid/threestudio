@@ -1,6 +1,7 @@
 # Reference:
 # https://github.com/cvpaperchallenge/Ascender
 # https://github.com/nerfstudio-project/nerfstudio
+# docker build -t purplesand/threestudio:latest -f docker/Dockerfile .
 
 FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 
@@ -52,8 +53,8 @@ RUN pip install --upgrade pip setuptools ninja
 RUN pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 --index-url https://download.pytorch.org/whl/cu118
 # Install nerfacc and tiny-cuda-nn before installing requirements.txt
 # because these two installations are time consuming and error prone
-RUN pip install git+https://github.com/KAIR-BAIR/nerfacc.git@v0.5.2
-RUN pip install git+https://github.com/NVlabs/tiny-cuda-nn.git#subdirectory=bindings/torch
+RUN pip install https://huggingface.co/camenduru/CoDeF/resolve/main/tinycudann-1.7-cp310-cp310-linux_x86_64.whl
+RUN pip install nerfacc -f https://nerfacc-bucket.s3.us-west-2.amazonaws.com/whl/torch-2.0.0_cu118.html
 
 COPY requirements.txt /tmp
 RUN cd /tmp && pip install -r requirements.txt

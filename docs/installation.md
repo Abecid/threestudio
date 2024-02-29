@@ -24,6 +24,21 @@ git clone https://github.com/threestudio-project/threestudio.git
 cd threestudio/
 ```
 
+## Install threestudio via Devcontainer
+read [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers) for more details.
+Also, read ./devcontainer/devcontainer.json for more details.
+
+1. First pull docker file from docker hub
+```
+docker pull purplesand/threestudio:latest
+```
+2. Open the project in VSCode
+3. Cmd+Shift+P -> "Dev Containers: Open Folder in Container"
+4. If you want to connect to the container via SSH, you can use the following command
+```
+docker exec -it threestudio /bin/bash
+```
+
 ## Install threestudio via Docker
 
 1. [Install Docker Engine](https://docs.docker.com/engine/install/).

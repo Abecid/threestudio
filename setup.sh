@@ -33,16 +33,12 @@ python3 -m pip install --upgrade pip
 
 # Install Python dependencies
 echo "Installing Python dependencies from requirements.txt..."
-# pip install torch torchvision
 pip install ninja
 
 # Default requirements
+pip install git+https://github.com/NVlabs/tiny-cuda-nn.git#subdirectory=bindings/torch
+RUN pip install nerfacc -f https://nerfacc-bucket.s3.us-west-2.amazonaws.com/whl/torch-2.0.0_cu118.html
+
 pip install -r requirements.txt
-
-# zero123 requirements
-pip install -r requirements-zero123.txt
-
-# gradio requirements
-pip install -r requirements-gradio.txt
 
 echo "Setup completed successfully!"

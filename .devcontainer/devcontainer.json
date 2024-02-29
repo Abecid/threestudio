@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/anaconda
+// 
+// To specify image name created by dev container,
+// 1. you should use [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli).
+//   ```bash
+//   devcontainer build --workspace-folder . --image-name threestudio:dev
+//   ```
+// 2. Remove long image name ex) vsc-threestudio-be... after build
+{
+	"name": "ThreeStudio",
+	"image": "purplesand/threestudio:latest",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {
+	// },
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [],
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.black-formatter",
+				"eamodio.gitlens",
+				"GitHub.copilot",
+				"ms-python.isort",
+				"mechatroner.rainbow-csv",
+				"njpwerner.autodocstring",
+				"ms-toolsai.jupyter",
+				"GitHub.vscode-pull-request-github"
+			]
+		}
+	},
+	// connect to gpu by nvidia docker
+	"runArgs": [
+		"--gpus",
+		"all",
+		"--shm-size=4G",
+		"--name",
+		"${localEnv:USER}_devcontainer"
+	],
+	"mounts": []
+}

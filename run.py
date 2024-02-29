@@ -1,10 +1,11 @@
 import argparse
 import contextlib
+import json
 import logging
 import os
+import random
 import sys
 import time
-import random
 
 import pytorch_lightning as pl
 import torch
@@ -13,6 +14,7 @@ from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import CSVLogger, TensorBoardLogger
 from pytorch_lightning.utilities.rank_zero import rank_zero_only
 
+import launch
 import threestudio
 from threestudio.systems.base import BaseSystem
 from threestudio.utils.callbacks import (
@@ -25,9 +27,6 @@ from threestudio.utils.config import ExperimentConfig, load_config
 from threestudio.utils.misc import get_rank
 from threestudio.utils.typing import Optional
 
-import json
-
-import launch
 
 def inference(cfg, logger, devices, seed):
     # set a different seed for each device
@@ -107,7 +106,7 @@ def inference(cfg, logger, devices, seed):
             return
         ckpt = torch.load(ckpt_path, map_location="cpu")
         system.set_resume_status(ckpt["epoch"], ckpt["global_step"])
-        
+
     if args.train:
         trainer.fit(system, datamodule=dm, ckpt_path=cfg.resume)
         trainer.test(system, datamodule=dm)
@@ -126,13 +125,13 @@ def inference(cfg, logger, devices, seed):
         set_system_status(system, cfg.resume)
         trainer.predict(system, datamodule=dm, ckpt_path=cfg.resume)
 
+
 def main(args, extras) -> None:
     # set CUDA_VISIBLE_DEVICES if needed, then import pytorch-lightning
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     env_gpus_str = os.environ.get("CUDA_VISIBLE_DEVICES", None)
     env_gpus = list(env_gpus_str.split(",")) if env_gpus_str else []
-    selected_gpus = [0]
-    
+
     devices = -1
     if len(env_gpus) > 0:
         # CUDA_VISIBLE_DEVICES was set already, e.g. within SLURM srun or higher-level script.
@@ -164,24 +163,25 @@ def main(args, extras) -> None:
     # parse YAML config to OmegaConf
     cfg: ExperimentConfig
     cfg = load_config(args.config, cli_args=extras, n_gpus=n_gpus)
-    
-    with open(args.images_json, 'r') as file:
+
+    with open(args.images_json, "r") as file:
         images = json.load(file)
-        
+
     for image in images:
-        cfg.data.image_path = image['image_path']
+        cfg.data.image_path = image["image_path"]
         for i in range(4):
             random_seed = random.randint(0, 100000)
             random_seed = random_seed + get_rank()
-            cfg.random_seed = random_seed
+            cfg.seed = random_seed
             inference(cfg, logger, devices, random_seed)
 
-    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--config", default="configs/zero123.yaml", help="path to config file (configs/zero123.yaml)"
+        "--config",
+        default="configs/zero123.yaml",
+        help="path to config file (configs/zero123.yaml)",
     )
     parser.add_argument(
         "--gpu",
@@ -192,7 +192,9 @@ if __name__ == "__main__":
         "this argument is ignored and all available GPUs are always used.",
     )
     parser.add_argument(
-        "--images_json", default="./load/data/images.json", help="path to json file (./load/data/images.json)"
+        "--images_json",
+        default="./load/data/images.json",
+        help="path to json file (./load/data/images.json)",
     )
 
     group = parser.add_mutually_exclusive_group(required=True)

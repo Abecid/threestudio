@@ -250,7 +250,7 @@ class Zero123(BaseLift3DSystem):
     def validation_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-            f"it{self.true_global_step}-val/{batch['index'][0]}-{self.cfg.random_seed}.png",
+            f"it{self.true_global_step}-val/{batch['index'][0]}-{self.cfg.seed}.png",
             (
                 [
                     {
@@ -299,9 +299,11 @@ class Zero123(BaseLift3DSystem):
                 },
             ],
             # claforte: TODO: don't hardcode the frame numbers to record... read them from cfg instead.
-            name=f"validation_step_batchidx_{batch_idx}"
-            if batch_idx in [0, 7, 15, 23, 29]
-            else None,
+            name=(
+                f"validation_step_batchidx_{batch_idx}"
+                if batch_idx in [0, 7, 15, 23, 29]
+                else None
+            ),
             step=self.true_global_step,
         )
 
@@ -323,7 +325,7 @@ class Zero123(BaseLift3DSystem):
     def test_step(self, batch, batch_idx):
         out = self(batch)
         self.save_image_grid(
-            f"it{self.true_global_step}-test/{batch['index'][0]}-{self.cfg.random_seed}.png",
+            f"it{self.true_global_step}-test/{batch['index'][0]}-{self.cfg.seed}.png",
             (
                 [
                     {
