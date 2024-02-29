@@ -38,9 +38,10 @@ class BaseSystem(pl.LightningModule, Updateable, SaverMixin):
 
     cfg: Config
 
-    def __init__(self, cfg, resumed=False) -> None:
+    def __init__(self, cfg, resumed=False, cfg_full=None) -> None:
         super().__init__()
         self.cfg = parse_structured(self.Config, cfg)
+        self.cfg_full = cfg_full
         self._save_dir: Optional[str] = None
         self._resumed: bool = resumed
         self._resumed_eval: bool = False

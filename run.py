@@ -32,9 +32,12 @@ def inference(cfg, logger, devices, seed):
     # set a different seed for each device
     pl.seed_everything(seed, workers=True)
 
+    # Image Data Infomation from Config
     dm = threestudio.find(cfg.data_type)(cfg.data)
-    system: BaseSystem = threestudio.find(cfg.system_type)(
-        cfg.system, resumed=cfg.resume is not None
+
+    # 3D Generation Model System from Config
+    system: BaseSystem = threestudio.find(cfg.system_type) (
+        cfg.system, resumed=cfg.resume is not None, cfg_full=cfg
     )
     system.set_save_dir(os.path.join(cfg.trial_dir, "save"))
 
