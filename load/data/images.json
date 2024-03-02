@@ -49,7 +49,7 @@
     },
     {
         "Prompt": "Dog in a princess dress",
-        "images_path": "./load/images/dog_dress_rgba.png",
+        "image_path": "./load/images/dog_dress_rgba.png",
         "Source": "DALLE-3"
     }
 ]
