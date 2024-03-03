@@ -163,20 +163,23 @@ def main(args, extras) -> None:
                 handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
 
     launch.load_custom_modules()
-
+    
     # parse YAML config to OmegaConf
     cfg: ExperimentConfig
-    cfg = load_config(args.config, cli_args=extras, n_gpus=n_gpus)
 
     with open(args.images_json, "r") as file:
         images = json.load(file)
 
     for image in images:
-        cfg.data.image_path = image["image_path"]
+        args.config.data.image_path = image["image_path"]
+        # cfg.data.image_path = image["image_path"]
         for i in range(4):
             random_seed = random.randint(0, 100000)
             random_seed = random_seed + get_rank()
             cfg.seed = random_seed
+            
+            cfg = load_config(args.config, cli_args=extras, n_gpus=n_gpus)
+            
             inference(cfg, logger, devices, random_seed)
 
 
