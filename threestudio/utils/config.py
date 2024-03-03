@@ -99,6 +99,15 @@ class ExperimentConfig:
         self.exp_dir = os.path.join(self.exp_root_dir, self.name)
         self.trial_dir = os.path.join(self.exp_dir, self.trial_name)
         os.makedirs(self.trial_dir, exist_ok=True)
+        
+    def update_values(self, key_value_list:list):
+        for key, value in key_value_list:
+            if key == 'tag':
+                self.tag = self.tag.replace("hamburger_rgba.png", value)
+            else:
+                setattr(self, key, value)
+        self.__post__init__()
+        return self
 
 
 def load_config(*yamls: str, cli_args: list = [], from_string=False, **kwargs) -> Any:

@@ -171,16 +171,24 @@ def main(args, extras) -> None:
         images = json.load(file)
 
     for image in images:
-        args.config.data.image_path = image["image_path"]
-        # cfg.data.image_path = image["image_path"]
         image_name = image["image_path"].split("/")[-1].split(".")[0].replace(" ", "_")
-        args.config.tag = args.config.tag.replace("hamburger_rgba.png", image_name)
+        cfg = load_config(args.config, cli_args=extras, n_gpus=n_gpus)
+        cfg.data.image_path = image["image_path"]
+        
+        update_values = [
+            # ("data.image_path", image["image_path"]),
+            ("tag", image_name),
+        ]
+        ExperimentConfig.update_values(update_values)
+        
+        # args.config.data.image_path = image["image_path"]
+        # cfg.data.image_path = image["image_path"]
+        # args.config.tag = args.config.tag.replace("hamburger_rgba.png", image_name)
+        
         for i in range(4):
             random_seed = random.randint(0, 100000)
             random_seed = random_seed + get_rank()
             cfg.seed = random_seed
-            
-            cfg = load_config(args.config, cli_args=extras, n_gpus=n_gpus)
             
             inference(cfg, logger, devices, random_seed)
 
