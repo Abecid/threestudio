@@ -173,6 +173,8 @@ def main(args, extras) -> None:
     for image in images:
         args.config.data.image_path = image["image_path"]
         # cfg.data.image_path = image["image_path"]
+        image_name = image["image_path"].split("/")[-1].split(".")[0].replace(" ", "_")
+        args.config.tag = args.config.tag.replace("hamburger_rgba.png", image_name)
         for i in range(4):
             random_seed = random.randint(0, 100000)
             random_seed = random_seed + get_rank()
