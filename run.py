@@ -179,7 +179,7 @@ def main(args, extras) -> None:
             # ("data.image_path", image["image_path"]),
             ("tag", image_name),
         ]
-        ExperimentConfig.update_values(update_values)
+        cfg.update_values(update_values)
         
         # args.config.data.image_path = image["image_path"]
         # cfg.data.image_path = image["image_path"]
