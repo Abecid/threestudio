@@ -180,7 +180,10 @@ def main(args, extras) -> None:
             ("tag", image_name),
         ]
         cfg.tag = cfg.tag.replace("hamburger_rgba.png", image_name)
-        cfg.__post_init__()
+        cfg.trial_name = cfg.tag
+        cfg.trial_dir = os.path.join(cfg.exp_dir, cfg.trial_name)
+        
+        # cfg.__post_init__()
         # cfg.update_values(update_values)
         
         # args.config.data.image_path = image["image_path"]
