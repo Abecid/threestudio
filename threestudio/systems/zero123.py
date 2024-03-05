@@ -248,11 +248,10 @@ class Zero123(BaseLift3DSystem):
         return {"loss": total_loss}
 
     def validation_step(self, batch, batch_idx):
-        image_path = f"it{self.true_global_step}-val/{batch['index'][0]}"
+        image_path = f"it{self.true_global_step}-val"
         if self.cfg_full and self.cfg_full.get("seed", None) is not None:
-            image_path += f"-{self.cfg_full.seed}.png"
-        else:
-            image_path += ".png"
+            image_path += f"/{self.cfg_full.seed}"
+        image_path += f"/{batch['index'][0]}.png"
         out = self(batch)
         self.save_image_grid(
             # f"it{self.true_global_step}-val/{batch['index'][0]}-{self.cfg.seed}.png",
@@ -315,8 +314,12 @@ class Zero123(BaseLift3DSystem):
 
     def on_validation_epoch_end(self):
         filestem = f"it{self.true_global_step}-val"
+        image_name = filestem
+        if self.cfg_full and self.cfg_full.get("seed", None) is not None:
+            filestem += f"/{self.cfg_full.seed}"
+            image_name += f"-{self.cfg_full.seed}"
         self.save_img_sequence(
-            filestem,
+            image_name,
             filestem,
             "(\d+)\.png",
             save_format="mp4",
@@ -329,11 +332,10 @@ class Zero123(BaseLift3DSystem):
         # )
 
     def test_step(self, batch, batch_idx):
-        image_path = f"it{self.true_global_step}-val/{batch['index'][0]}"
+        image_path = f"it{self.true_global_step}-val"
         if self.cfg_full and self.cfg_full.get("seed", None) is not None:
-            image_path += f"-{self.cfg_full.seed}.png"
-        else:
-            image_path += ".png"
+            image_path += f"/{self.cfg_full.seed}"
+        image_path += f"/{batch['index'][0]}.png"
         out = self(batch)
         self.save_image_grid(
             # f"it{self.true_global_step}-test/{batch['index'][0]}-{self.cfg.seed}.png",
@@ -390,9 +392,14 @@ class Zero123(BaseLift3DSystem):
         )
 
     def on_test_epoch_end(self):
+        filestem = f"it{self.true_global_step}-test"
+        image_name = filestem
+        if self.cfg_full and self.cfg_full.get("seed", None) is not None:
+            filestem += f"/{self.cfg_full.seed}"
+            image_name += f"-{self.cfg_full.seed}"
         self.save_img_sequence(
-            f"it{self.true_global_step}-test",
-            f"it{self.true_global_step}-test",
+            image_name,
+            filestem,
             "(\d+)\.png",
             save_format="mp4",
             fps=30,
