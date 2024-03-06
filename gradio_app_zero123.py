@@ -209,7 +209,7 @@ def run(
     new_config_path = 'configs/zero123_tmp.yaml'
 
     with open(new_config_path, "w") as f:
-        f.write(config)
+        yaml.dump(config, f)
 
     # manually assign the output directory, name and tag so that we know the trial directory
     name = os.path.basename(model_config[model_name]["path"]).split(".")[0]
