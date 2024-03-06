@@ -332,7 +332,7 @@ class Zero123(BaseLift3DSystem):
         # )
 
     def test_step(self, batch, batch_idx):
-        image_path = f"it{self.true_global_step}-val"
+        image_path = f"it{self.true_global_step}-test"
         if self.cfg_full and self.cfg_full.get("seed", None) is not None:
             image_path += f"/{self.cfg_full.seed}"
         image_path += f"/{batch['index'][0]}.png"
