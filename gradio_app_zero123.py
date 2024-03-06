@@ -359,7 +359,7 @@ def launch(
 
                 # prompt input
                 # prompt_input = gr.Textbox(value=DEFAULT_PROMPT, label="Input prompt")
-                image_input = gr.Image(label="Base Image", type="file")
+                image_input = gr.Image(label="Base Image", type="filepath")
 
                 # guidance scale slider
                 guidance_scale_input = gr.Slider(
