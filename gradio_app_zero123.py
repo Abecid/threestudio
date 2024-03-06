@@ -77,12 +77,12 @@ EXP_ROOT_DIR = "outputs-gradio"
 DEFAULT_PROMPT = "a delicious hamburger"
 model_name_config = [
     ("Zero-123", "configs/gradio/zero123.yaml"),
-    ("SJC (Stable Diffusion)", "configs/gradio/sjc.yaml"),
-    ("DreamFusion (DeepFloyd-IF)", "configs/gradio/dreamfusion-if.yaml"),
-    ("DreamFusion (Stable Diffusion)", "configs/gradio/dreamfusion-sd.yaml"),
-    ("TextMesh (DeepFloyd-IF)", "configs/gradio/textmesh-if.yaml"),
-    ("Latent-NeRF (Stable Diffusion)", "configs/gradio/latentnerf.yaml"),
-    ("Fantasia3D (Stable Diffusion, Geometry Only)", "configs/gradio/fantasia3d.yaml"),
+    # ("SJC (Stable Diffusion)", "configs/gradio/sjc.yaml"),
+    # ("DreamFusion (DeepFloyd-IF)", "configs/gradio/dreamfusion-if.yaml"),
+    # ("DreamFusion (Stable Diffusion)", "configs/gradio/dreamfusion-sd.yaml"),
+    # ("TextMesh (DeepFloyd-IF)", "configs/gradio/textmesh-if.yaml"),
+    # ("Latent-NeRF (Stable Diffusion)", "configs/gradio/latentnerf.yaml"),
+    # ("Fantasia3D (Stable Diffusion, Geometry Only)", "configs/gradio/fantasia3d.yaml"),
 ]
 model_list = [m[0] for m in model_name_config]
 model_config: Dict[str, Dict[str, Any]] = {}
@@ -329,7 +329,7 @@ def launch(
                 """
             else:
                 header = """
-                # threestudio Text-to-3D Web Demo
+                # threestudio Image-to-3D Web Demo
 
                 ### Usage
                 - Select a model from the dropdown menu.
