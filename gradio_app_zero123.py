@@ -204,7 +204,7 @@ def run(
         
     config['data']['image_path'] = image_path
     
-    config['system']['gradio'] = True
+    # config['system']['gradio'] = True
     
     new_config_path = 'configs/zero123_tmp.yaml'
 
