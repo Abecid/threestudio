@@ -226,7 +226,7 @@ def run(
             f'tag="{tag}"',
             f"exp_root_dir={os.path.join(save_root, EXP_ROOT_DIR)}",
             "use_timestamp=false",
-            f'system.prompt_processor.prompt="{prompt}"',
+            # f'system.prompt_processor.prompt="{prompt}"',
             f"system.guidance.guidance_scale={guidance_scale}",
             f"seed={seed}",
             f"trainer.max_steps={max_steps}",
