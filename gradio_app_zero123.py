@@ -146,6 +146,7 @@ def get_current_status(process, trial_dir, alive_path):
     # get the validation image and testing video if they exist
     if os.path.exists(save_path):
         images = glob.glob(os.path.join(save_path, "*.png"))
+        print(f"images: {images}")
         steps = [
             int(re.match(r"it(\d+)-0\.png", os.path.basename(f)).group(1))
             for f in images
