@@ -239,7 +239,7 @@ def run(
 
     # spawn the watcher process
     watch_process = subprocess.Popen(
-        "python gradio_app.py watch".split()
+        "python gradio_app_zero123.py watch".split()
         + ["--pid", f"{process.pid}", "--trial-dir", f"{trial_dir}"]
     )
 

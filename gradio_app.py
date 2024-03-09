@@ -75,7 +75,7 @@ class ExperimentStatus:
 EXP_ROOT_DIR = "outputs-gradio"
 DEFAULT_PROMPT = "a delicious hamburger"
 model_name_config = [
-    ("Zero-123", "configs/gradio/zero123.yaml"),
+    # ("Zero-123", "configs/gradio/zero123.yaml"),
     ("SJC (Stable Diffusion)", "configs/gradio/sjc.yaml"),
     ("DreamFusion (DeepFloyd-IF)", "configs/gradio/dreamfusion-if.yaml"),
     ("DreamFusion (Stable Diffusion)", "configs/gradio/dreamfusion-sd.yaml"),
