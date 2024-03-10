@@ -336,6 +336,7 @@ class Zero123(BaseLift3DSystem):
         if self.cfg_full and self.cfg_full.get("seed", None) is not None:
             image_path += f"/{self.cfg_full.seed}"
         image_path += f"/{batch['index'][0]}.png"
+        print(f"Image Path: {image_path}")
         out = self(batch)
         self.save_image_grid(
             # f"it{self.true_global_step}-test/{batch['index'][0]}-{self.cfg.seed}.png",
