@@ -157,7 +157,7 @@ def get_current_status(process, trial_dir, alive_path):
         if latest_folder:
             image_files = glob.glob(os.path.join(latest_folder, "*.png"))
             if not image_files:
-                return None  # No images found in the latest folder
+                return status  # No images found in the latest folder
             
             # Assuming the files are named like '0.png', '1.png', etc.
             first_image = min(image_files, key=lambda x: int(os.path.basename(x).split('.')[0]))
