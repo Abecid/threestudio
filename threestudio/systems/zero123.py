@@ -41,15 +41,15 @@ class Zero123(BaseLift3DSystem):
 
         # visualize all training images
         all_images = self.trainer.datamodule.train_dataloader().dataset.get_all_images()
-        self.save_image_grid(
-            "all_training_images.png",
-            [
-                {"type": "rgb", "img": image, "kwargs": {"data_format": "HWC"}}
-                for image in all_images
-            ],
-            name="on_fit_start",
-            step=self.true_global_step,
-        )
+        # self.save_image_grid(
+        #     "all_training_images.png",
+        #     [
+        #         {"type": "rgb", "img": image, "kwargs": {"data_format": "HWC"}}
+        #         for image in all_images
+        #     ],
+        #     name="on_fit_start",
+        #     step=self.true_global_step,
+        # )
 
         self.pearson = PearsonCorrCoef().to(self.device)
 
