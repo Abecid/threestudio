@@ -145,25 +145,53 @@ def get_current_status(process, trial_dir, alive_path):
 
     # get the validation image and testing video if they exist
     if os.path.exists(save_path):
-        images = glob.glob(os.path.join(save_path, "*.png"))
-        print(f"images: {images}")
-        steps = [
-            int(re.match(r"it(\d+)-0\.png", os.path.basename(f)).group(1))
-            for f in images
-        ]
-        images = sorted(list(zip(images, steps)), key=lambda x: x[1])
-        if len(images) > 0:
-            status.output_image = images[-1][0]
+        folders = glob.glob(os.path.join(save_path, "it*-val"))
+        highest_step = -1
+        latest_folder = ""
+        
+        for folder in folders:
+            step = int(re.search(r"it(\d+)-val", folder).group(1))
+            if step > highest_step:
+                highest_step = step
+                latest_folder = folder
+        if latest_folder:
+            image_files = glob.glob(os.path.join(latest_folder, "*.png"))
+            if not image_files:
+                return None  # No images found in the latest folder
+            
+            # Assuming the files are named like '0.png', '1.png', etc.
+            first_image = min(image_files, key=lambda x: int(os.path.basename(x).split('.')[0]))
+            status.output_image = first_image
+            
+            videos = glob.glob(os.path.join(latest_folder, "*.mp4"))
+            steps = [
+                # int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
+                int(re.match(r"it(\d+)-val\.mp4", os.path.basename(f)).group(1))
+                for f in videos
+            ]
+            videos = sorted(list(zip(videos, steps)), key=lambda x: x[1])
+            if len(videos) > 0:
+                status.output_video = videos[-1][0]
+            
+        # images = glob.glob(os.path.join(save_path, "*.png"), recursive=True)
+        # print(f"images: {images}")
+        # steps = [
+        #     int(re.match(r"it(\d+)-0\.png", os.path.basename(f)).group(1))
+        #     for f in images
+        # ]
+        # images = sorted(list(zip(images, steps)), key=lambda x: x[1])
+        # if len(images) > 0:
+        #     status.output_image = images[-1][0]
 
-        videos = glob.glob(os.path.join(save_path, "*.mp4"))
-        steps = [
-            # int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
-            int(re.match(r"it(\d+)-val\.mp4", os.path.basename(f)).group(1))
-            for f in videos
-        ]
-        videos = sorted(list(zip(videos, steps)), key=lambda x: x[1])
-        if len(videos) > 0:
-            status.output_video = videos[-1][0]
+        # videos = glob.glob(os.path.join(save_path, "*.mp4"))
+        # steps = [
+        #     # int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
+        #     int(re.match(r"it(\d+)-val\.mp4", os.path.basename(f)).group(1))
+        #     for f in videos
+        # ]
+        # videos = sorted(list(zip(videos, steps)), key=lambda x: x[1])
+        # if len(videos) > 0:
+        #     status.output_video = videos[-1][0]
 
         export_dirs = glob.glob(os.path.join(save_path, "*export"))
         steps = [
