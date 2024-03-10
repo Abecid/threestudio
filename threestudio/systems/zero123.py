@@ -248,10 +248,13 @@ class Zero123(BaseLift3DSystem):
         return {"loss": total_loss}
 
     def validation_step(self, batch, batch_idx):
-        image_path = f"it{self.true_global_step}-val"
+        # From dreamfusion
+        # f"it{self.true_global_step}-{batch['index'][0]}.png",
+        # image_path = f"it{self.true_global_step}-val"
+        image_path = f"it{self.true_global_step}"
         if self.cfg_full and self.cfg_full.get("seed", None) is not None:
             image_path += f"/{self.cfg_full.seed}"
-        image_path += f"/{batch['index'][0]}.png"
+        image_path += f"-{batch['index'][0]}.png"
         out = self(batch)
         self.save_image_grid(
             # f"it{self.true_global_step}-val/{batch['index'][0]}-{self.cfg.seed}.png",

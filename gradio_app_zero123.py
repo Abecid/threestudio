@@ -157,7 +157,8 @@ def get_current_status(process, trial_dir, alive_path):
 
         videos = glob.glob(os.path.join(save_path, "*.mp4"))
         steps = [
-            int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
+            # int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
+            int(re.match(r"it(\d+)-val\.mp4", os.path.basename(f)).group(1))
             for f in videos
         ]
         videos = sorted(list(zip(videos, steps)), key=lambda x: x[1])
@@ -205,6 +206,8 @@ def run(
         
     config['data']['image_path'] = image_path
     
+    print(f"Image path: {image_path}")
+    
     # config['system']['gradio'] = True
     
     new_config_path = 'configs/zero123_tmp.yaml'
@@ -221,7 +224,7 @@ def run(
     # spawn the training process
     gpu = os.environ.get("CUDA_VISIBLE_DEVICES", "0")
     process = subprocess.Popen(
-        f"python launch.py --config {new_config_path} --train --gpu {gpu} --gradio trainer.enable_progress_bar=false".split()
+        f"python launch.py --config {new_config_path} --train --gpu {gpu} --gradio --data.image_path={image_path} trainer.enable_progress_bar=false".split()
         + [
             f'name="{name}"',
             f'tag="{tag}"',
