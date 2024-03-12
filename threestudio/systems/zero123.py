@@ -327,7 +327,7 @@ class Zero123(BaseLift3DSystem):
             filestem,
             "(\d+)\.png",
             save_format="mp4",
-            fps=5,
+            fps=12,
             name="validation_epoch_end",
             step=self.true_global_step,
         )
@@ -407,7 +407,7 @@ class Zero123(BaseLift3DSystem):
             filestem,
             "(\d+)\.png",
             save_format="mp4",
-            fps=5,
+            fps=12,
             name="test",
             step=self.true_global_step,
         )

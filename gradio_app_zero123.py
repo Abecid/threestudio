@@ -163,7 +163,7 @@ def get_current_status(process, trial_dir, alive_path):
             first_image = min(image_files, key=lambda x: int(os.path.basename(x).split('.')[0]))
             status.output_image = first_image
             
-            videos = glob.glob(os.path.join(latest_folder, "*.mp4"))
+            videos = glob.glob(os.path.join(save_path, "*.mp4"))
             steps = [
                 # int(re.match(r"it(\d+)-test\.mp4", os.path.basename(f)).group(1))
                 int(re.match(r"it(\d+)-val\.mp4", os.path.basename(f)).group(1))
